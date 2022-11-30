@@ -1,5 +1,5 @@
 // ** React Imports
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 // ** Custom Components
 import Avatar from '@components/avatar';
@@ -23,8 +23,12 @@ import {
   DropdownToggle,
   DropdownItem,
 } from 'reactstrap';
+import { signOut } from '@src/services/auth';
+import { getHomeRouteForLoggedInUser } from '@src/utility/Utils';
 
 const UserDropdown = () => {
+  const navigate = useNavigate();
+
   return (
     <UncontrolledDropdown tag='li' className='dropdown-user nav-item'>
       <DropdownToggle
@@ -72,9 +76,17 @@ const UserDropdown = () => {
           <HelpCircle size={14} className="me-75" />
           <span className="align-middle">FAQ</span>
         </DropdownItem> */}
-        <DropdownItem tag={Link} to='/login'>
+        <DropdownItem
+          tag={Link}
+          to='/login'
+          onClick={(e) => {
+            signOut('client');
+            localStorage.removeItem('userData');
+            navigate(getHomeRouteForLoggedInUser(''));
+          }}
+        >
           <Power size={14} className='me-75' />
-          <span className='align-middle'>Logout</span>
+          <span className='align-middle'>Salir</span>
         </DropdownItem>
       </DropdownMenu>
     </UncontrolledDropdown>

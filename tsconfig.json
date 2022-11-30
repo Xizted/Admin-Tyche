@@ -27,7 +27,8 @@
       "@utils": ["utility/Utils"],
       "@apollo-utils/*": ["utility/apollo/*"],
       "@hooks/*": ["utility/hooks/*"],
-      "@apollo-config/*": ["apollo/*"]
+      "@apollo-config/*": ["apollo/*"],
+      "@services/*": ["services/*"]
     }
   },
   "include": ["src"],

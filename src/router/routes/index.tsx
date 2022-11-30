@@ -1,6 +1,5 @@
 // ** React Imports
-import { Fragment, lazy } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Fragment } from 'react';
 // ** Layouts
 import BlankLayout from '@layouts/BlankLayout';
 import VerticalLayout from '@src/layouts/VerticalLayout';
@@ -9,9 +8,11 @@ import LayoutWrapper from '@src/@core/layouts/components/layout-wrapper';
 
 // ** Route Components
 import PublicRoute from '@components/routes/PublicRoute';
+import PrivateRoute from '@src/@core/components/routes/PrivateRoute';
 
 // ** Utils
 import { isObjEmpty } from '@utils';
+import DashboardRoutes from './Dashboard';
 
 const getLayout = {
   blank: <BlankLayout />,
@@ -25,41 +26,8 @@ const TemplateTitle = '%s - Tyche Admin';
 // ** Default Route
 const DefaultRoute = '/home';
 
-const Home = lazy(() => import('../../views/Home'));
-const SecondPage = lazy(() => import('../../views/SecondPage'));
-const Login = lazy(() => import('../../views/Login'));
-const Error = lazy(() => import('../../views/Error'));
-
 // ** Merge Routes
-const Routes = [
-  {
-    path: '/',
-    index: true,
-    element: <Navigate replace to={DefaultRoute} />,
-  },
-  {
-    path: '/home',
-    element: <Home />,
-  },
-  {
-    path: '/second-page',
-    element: <SecondPage />,
-  },
-  {
-    path: '/login',
-    element: <Login />,
-    meta: {
-      layout: 'blank',
-    },
-  },
-  {
-    path: '/error',
-    element: <Error />,
-    meta: {
-      layout: 'blank',
-    },
-  },
-];
+const Routes = [...DashboardRoutes];
 
 const getRouteMeta = (route) => {
   if (isObjEmpty(route.element.props)) {
@@ -84,11 +52,12 @@ const MergeLayoutRoutes = (layout, defaultLayout) => {
         ((route.meta === undefined || route.meta.layout === undefined) &&
           defaultLayout === layout)
       ) {
-        const RouteTag = PublicRoute;
+        let RouteTag = PrivateRoute;
 
         // ** Check for public or private route
         if (route.meta) {
           route.meta.layout === 'blank' ? (isBlank = true) : (isBlank = false);
+          RouteTag = route.meta.publicRoute ? PublicRoute : PrivateRoute;
         }
         if (route.element) {
           const Wrapper =

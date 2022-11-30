@@ -1,6 +1,5 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import postcss from 'postcss-rtl';
 import path from 'path';
 
 // https://vitejs.dev/config/
@@ -19,11 +18,7 @@ export default defineConfig({
       '@apollo-utils': path.resolve(__dirname, 'src/utility/apollo'),
       '@hooks': path.resolve(__dirname, 'src/utility/hooks'),
       '@apollo-config': path.resolve(__dirname, 'src/apollo'),
-    },
-  },
-  css: {
-    postcss: {
-      plugins: [postcss()],
+      '@services': path.resolve(__dirname, 'src/services'),
     },
   },
 });

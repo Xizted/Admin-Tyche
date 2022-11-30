@@ -14,6 +14,9 @@ import { ThemeContext } from './utility/context/ThemeColors';
 
 // ** ThemeConfig
 import themeConfig from './configs/themeConfig';
+// ** Intl, CASL
+import ability from './configs/acl/ability';
+import { AbilityContext } from './utility/context/Can';
 
 // ** Toast
 import { Toaster } from 'react-hot-toast';
@@ -46,13 +49,15 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       <BrowserRouter>
         <Provider store={store}>
           <Suspense fallback={<Spinner />}>
-            <ThemeContext>
-              <LazyApp />
-              <Toaster
-                position={themeConfig.layout.toastPosition}
-                toastOptions={{ className: 'react-hot-toast' }}
-              />
-            </ThemeContext>
+            <AbilityContext.Provider value={ability}>
+              <ThemeContext>
+                <LazyApp />
+                <Toaster
+                  position={themeConfig.layout.toastPosition}
+                  toastOptions={{ className: 'react-hot-toast' }}
+                />
+              </ThemeContext>
+            </AbilityContext.Provider>
           </Suspense>
         </Provider>
       </BrowserRouter>

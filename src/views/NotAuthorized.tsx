@@ -9,14 +9,15 @@ import { useSkin } from '@hooks/useSkin';
 
 // ** Styles
 import '@styles/base/pages/page-misc.scss';
+import notAuthorizedDark from '@src/assets/images/pages/not-authorized-dark.svg';
+import notAuthorized from '@src/assets/images/pages/not-authorized.svg';
 
 const NotAuthorized = () => {
   // ** Hooks
   const { skin } = useSkin();
 
-  const illustration =
-      skin === 'dark' ? 'not-authorized-dark.svg' : 'not-authorized.svg',
-    source = require(`@src/assets/images/pages/${illustration}`).default;
+  const illustration = skin === 'dark' ? notAuthorizedDark : notAuthorized,
+    source = illustration;
   return (
     <div className='misc-wrapper'>
       <Link className='brand-logo' to='/'>
@@ -49,11 +50,7 @@ const NotAuthorized = () => {
       </Link>
       <div className='misc-inner p-2 p-sm-3'>
         <div className='w-100 text-center'>
-          <h2 className='mb-1'>You are not authorized! 🔐</h2>
-          <p className='mb-2'>
-            The Webtrends Marketing Lab website in IIS uses the default IUSR
-            account credentials to access the web pages it serves.
-          </p>
+          <h2 className='mb-1'>¡No está autorizado! 🔐</h2>
           <Button
             tag={Link}
             color='primary'

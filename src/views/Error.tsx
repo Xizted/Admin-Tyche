@@ -9,13 +9,14 @@ import { useSkin } from '@hooks/useSkin';
 
 // ** Styles
 import '@styles/base/pages/page-misc.scss';
-
+import errorDark from '@src/assets/images/pages/error-dark.svg';
+import error from '@src/assets/images/pages/error.svg';
 const Error = () => {
   // ** Hooks
   const { skin } = useSkin();
 
-  const illustration = skin === 'dark' ? 'error-dark.svg' : 'error.svg',
-    source = require(`@src/assets/images/pages/${illustration}`).default;
+  const illustration = skin === 'dark' ? errorDark : error,
+    source = illustration;
   return (
     <div className='misc-wrapper'>
       <a className='brand-logo' href='/'>
@@ -48,9 +49,9 @@ const Error = () => {
       </a>
       <div className='misc-inner p-2 p-sm-3'>
         <div className='w-100 text-center'>
-          <h2 className='mb-1'>Page Not Found 🕵🏻‍♀️</h2>
+          <h2 className='mb-1'>Página no encontrada 🕵🏻‍♀️</h2>
           <p className='mb-2'>
-            Oops! 😖 The requested URL was not found on this server.
+            Oops! 😖 La URL solicitada no se encontró en este servidor.
           </p>
           <Button
             tag={Link}
