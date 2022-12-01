@@ -1,5 +1,5 @@
 // ** React Imports
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 // ** Reactstrap Imports
 import { Button } from 'reactstrap';
@@ -11,6 +11,8 @@ import { useSkin } from '@hooks/useSkin';
 import '@styles/base/pages/page-misc.scss';
 import notAuthorizedDark from '@src/assets/images/pages/not-authorized-dark.svg';
 import notAuthorized from '@src/assets/images/pages/not-authorized.svg';
+import { signOut } from '@src/services/auth';
+import { getHomeRouteForLoggedInUser } from '@src/utility/Utils';
 
 const NotAuthorized = () => {
   // ** Hooks
@@ -18,6 +20,8 @@ const NotAuthorized = () => {
 
   const illustration = skin === 'dark' ? notAuthorizedDark : notAuthorized,
     source = illustration;
+  const navigate = useNavigate();
+
   return (
     <div className='misc-wrapper'>
       <Link className='brand-logo' to='/'>
@@ -55,9 +59,14 @@ const NotAuthorized = () => {
             tag={Link}
             color='primary'
             className='btn-sm-block mb-1'
-            to={'/'}
+            to={'/login'}
+            onClick={(e) => {
+              signOut('client');
+              localStorage.removeItem('userData');
+              navigate(getHomeRouteForLoggedInUser(''));
+            }}
           >
-            Back to Home
+            Volver al inicio
           </Button>
           <img className='img-fluid' src={source} alt='Not authorized page' />
         </div>

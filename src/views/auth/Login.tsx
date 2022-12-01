@@ -7,7 +7,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import SpinnerComponent from '@src/@core/components/spinner/Fallback-spinner';
 import { useState } from 'react';
 import { signIn } from '@src/services/auth';
-
 // ** Custom Components
 import InputPasswordToggle from '@components/input-password-toggle';
 
@@ -25,6 +24,7 @@ import {
 // ** Styles
 import '@styles/react/pages/page-authentication.scss';
 import { getHomeRouteForLoggedInUser, getUserData } from '@src/utility/Utils';
+import jwtDecode from 'jwt-decode';
 
 const User = {
   id: 1,
@@ -84,7 +84,10 @@ const Login = () => {
     }
     signIn(token);
     setIsLoading(false);
-    localStorage.setItem('userData', JSON.stringify(User));
+    localStorage.setItem(
+      'userData',
+      JSON.stringify({ ...jwtDecode(token), role: 'admin' })
+    );
     const user = getUserData();
     if (user) {
       navigate(getHomeRouteForLoggedInUser(user.role));
@@ -138,8 +141,8 @@ const Login = () => {
               onSubmit={handleSubmit(onSubmit)}
             >
               <div className='mb-1'>
-                <Label className='form-label' for='login-email'>
-                  Email
+                <Label className='form-label' for='login-username'>
+                  Nombre de Usuario
                 </Label>
                 <Controller
                   control={control}
@@ -147,8 +150,8 @@ const Login = () => {
                   render={({ field: { name, onBlur, onChange, value } }) => (
                     <Input
                       type='text'
-                      id='login-email'
-                      placeholder='admin@tyche.com'
+                      id='login-username'
+                      placeholder='Admin'
                       autoFocus
                       name={name}
                       onBlur={onBlur}
