@@ -1,0 +1,14 @@
+@import '../../base/bootstrap-extended/include';
+@import '../../base/components/include';
+
+// List Applications App
+// ========================================================================
+
+.applications-list {
+  width: inherit;
+  @media (max-width: 647px) {
+    .table-header-actions {
+      margin-top: 1rem;
+    }
+  }
+}

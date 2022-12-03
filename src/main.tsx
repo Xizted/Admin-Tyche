@@ -32,6 +32,8 @@ import 'react-perfect-scrollbar/dist/css/styles.css';
 
 // ** React Hot Toast Styles
 import '@styles/react/libs/react-hot-toasts/react-hot-toasts.scss';
+import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
+import 'react-pdf/dist/esm/Page/TextLayer.css';
 
 // ** Core styles
 import './@core/assets/fonts/feather/iconfont.css';

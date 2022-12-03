@@ -26,29 +26,16 @@ import '@styles/react/pages/page-authentication.scss';
 import { getHomeRouteForLoggedInUser, getUserData } from '@src/utility/Utils';
 import jwtDecode from 'jwt-decode';
 
-const User = {
-  id: 1,
-  fullName: 'Osmar Ortiz',
-  username: 'xizted',
-  email: 'admin@tyche.com',
-  role: 'admin',
-  ability: [{ action: 'manage', subject: 'all' }],
-  accessToken:
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjY5MTE1MTUxLCJleHAiOjE2NjkxMTU3NTF9.eHCIQOA-0tYuXOfJih8jQrrRkmwHdh-Qykz_rk8bPmw',
-  refreshToken:
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjY5MTE1MTUxLCJleHAiOjE2NjkxMTU3NTF9.ynGEMcNu83SK4TyhoZHy1LaLK89_JpXj7Ev__SQgr5g',
-};
+const LoginSchema = Yup.object().shape({
+  username: Yup.string().required('Required'),
+  password: Yup.string().required('Required'),
+});
 
 const Login = () => {
   const navigate = useNavigate();
 
   const [login] = useMutation(LOGIN_USER, {
     fetchPolicy: 'no-cache',
-  });
-
-  const LoginSchema = Yup.object().shape({
-    username: Yup.string().required('Required'),
-    password: Yup.string().required('Required'),
   });
 
   const {

@@ -12,7 +12,8 @@ import PrivateRoute from '@src/@core/components/routes/PrivateRoute';
 
 // ** Utils
 import { isObjEmpty } from '@utils';
-import DashboardRoutes from './Dashboard';
+import DashboardRoutes from './DashboardRoutes';
+import ListsApplicationsRoutes from './ListsApplicationsRoutes';
 
 const getLayout = {
   blank: <BlankLayout />,
@@ -27,7 +28,7 @@ const TemplateTitle = '%s - Tyche Admin';
 const DefaultRoute = '/home';
 
 // ** Merge Routes
-const Routes = [...DashboardRoutes];
+const Routes = [...DashboardRoutes, ...ListsApplicationsRoutes];
 
 const getRouteMeta = (route) => {
   if (isObjEmpty(route.element.props)) {

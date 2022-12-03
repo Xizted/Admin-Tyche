@@ -1,4 +1,4 @@
-import Dashboard from './Dashboard';
-import ListApplications from './listApplications';
+import DashboardItems from './DashboardItems';
+import ListsApplicationsItems from './ListsApplicationsItems';
 
-export default [...Dashboard, ...ListApplications];
+export default [...DashboardItems, ...ListsApplicationsItems];

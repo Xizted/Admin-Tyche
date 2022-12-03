@@ -59,7 +59,7 @@ const Error = () => {
             color='primary'
             className='btn-sm-block mb-2'
           >
-            Back to home
+            Volver al inicio
           </Button>
           <img className='img-fluid' src={source} alt='Not authorized page' />
         </div>

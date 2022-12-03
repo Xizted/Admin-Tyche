@@ -1,5 +1,5 @@
-import React from 'react';
-
-export const ListBorrowers = () => {
+const ListBorrowers = () => {
   return <div>ListBorrowers</div>;
 };
+
+export default ListBorrowers;

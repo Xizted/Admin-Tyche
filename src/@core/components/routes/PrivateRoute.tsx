@@ -32,7 +32,6 @@ const PrivateRoute = ({ children, route }) => {
       return <Navigate to='/auth/not-auth' replace />;
     }
   }
-
   return <Suspense fallback={null}>{children}</Suspense>;
 };
 
