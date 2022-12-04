@@ -83,3 +83,12 @@ export const selectThemeColors = (theme) => ({
     neutral30: '#ededed', // for input hover border-color
   },
 });
+
+export const formatAsMoney = (amount: number, currencyCode: string) => {
+  const formatter = Intl.NumberFormat(undefined, {
+    style: 'currency',
+    currency: `${currencyCode}`,
+    minimumFractionDigits: 2,
+  });
+  return formatter.format(amount);
+};

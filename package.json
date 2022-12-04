@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "build-ignore-error": "tsc-silent -p './tsconfig.json' --suppress @ && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -88,6 +89,7 @@
     "@types/react": "^18.0.24",
     "@types/react-dom": "^18.0.8",
     "@vitejs/plugin-react": "^2.2.0",
+    "tsc-silent": "^1.2.2",
     "typescript": "^4.6.4",
     "vite": "^3.2.3"
   }

@@ -24,7 +24,7 @@ const LenderDetail = () => {
   }, []);
 
   if (!lender) return <UILoading />;
-  if (!lender) return navigate('/error');
+  if (!lender) navigate('/error');
 
   return (
     <div>

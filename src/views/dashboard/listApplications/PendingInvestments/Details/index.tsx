@@ -7,6 +7,7 @@ import GeneralInformation from './GeneralInformation';
 import UILoading from '@components/spinner/UILoading';
 import AttachedDocuments from './AttachedDocuments';
 import Actions from './Actions';
+import Investmentinformation from './Investmentinformation';
 
 enum Status {
   approved = 1,
@@ -60,6 +61,7 @@ const BorrowerDetail = () => {
           </div>
         </CardHeader>
         <CardBody>
+          <Investmentinformation />
           <GeneralInformation />
           <AttachedDocuments />
           {!lender.status && <Actions id={id} />}
