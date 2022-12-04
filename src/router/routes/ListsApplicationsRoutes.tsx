@@ -10,6 +10,11 @@ const LenderDetail = lazy(
 const ListBorrowers = lazy(
   () => import('../../views/dashboard/listApplications/ListBorrowers')
 );
+
+const BorrowerDetail = lazy(
+  () => import('../../views/dashboard/listApplications/ListBorrowers/Details')
+);
+
 const PendingInvestments = lazy(
   () => import('../../views/dashboard/listApplications/PendingInvestments')
 );
@@ -29,6 +34,10 @@ const ListsApplicationsRoutes = [
   {
     path: '/list-registration-applications/borrower',
     element: <ListBorrowers />,
+  },
+  {
+    element: <BorrowerDetail />,
+    path: '/list-registration-applications/borrower/:id',
   },
   {
     path: '/list-registration-applications/pending-investments',

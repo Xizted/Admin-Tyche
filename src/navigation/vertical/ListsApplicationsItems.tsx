@@ -1,5 +1,7 @@
 // ** Icons Import
-import { Users, DollarSign, FilePlus } from 'react-feather';
+import { Users } from 'react-feather';
+import { GiPayMoney, GiReceiveMoney } from 'react-icons/gi';
+import { FaUsers } from 'react-icons/fa';
 
 export default [
   {
@@ -14,20 +16,20 @@ export default [
   {
     id: 'borrowers-registration',
     title: 'Registros Prestatario',
-    icon: <Users size={20} />,
+    icon: <FaUsers size={20} />,
     navLink: '/list-registration-applications/borrower',
   },
   {
     id: 'pending-investments',
     title: 'Inversiones Pendientes',
-    icon: <DollarSign size={20} />,
+    icon: <GiReceiveMoney size={20} />,
     navLink: '/list-registration-applications/pending-investments',
   },
 
   {
     id: 'outstanding-loans',
     title: 'Prestamos Pendientes',
-    icon: <FilePlus size={20} />,
+    icon: <GiPayMoney size={20} />,
     navLink: '/list-registration-applications/outstanding-loans',
   },
 ];

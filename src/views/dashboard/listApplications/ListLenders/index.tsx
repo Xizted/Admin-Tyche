@@ -210,7 +210,11 @@ const ListLenders = () => {
       </Row>
       <Row>
         <Col sm={12}>
-          <DataTable data={data} columns={columns} title={'Listado'} />
+          <DataTable
+            data={data}
+            columns={columns}
+            title={'Listado de solicitudes de Prestamista'}
+          />
         </Col>
       </Row>
     </div>
