@@ -51,6 +51,9 @@ const ReversalForm = () => {
   return (
     <Form>
       <Row>
+        <Col sm='12'>
+          <h3 className='text-center my-2'>Solicitud Faltante o Erronea</h3>
+        </Col>
         <Col sm={12}>
           <Controller
             control={control}
@@ -60,7 +63,7 @@ const ReversalForm = () => {
                 setSchema={setSchema}
                 {...field}
                 type='text'
-                placeholder='Razón'
+                placeholder='Motivo '
                 label='Nombre'
                 invalid={errors.name && true}
               />
@@ -74,7 +77,7 @@ const ReversalForm = () => {
                 setSchema={setSchema}
                 {...field}
                 type='text'
-                placeholder='Razón'
+                placeholder='Motivo '
                 label='Apellido'
                 invalid={errors.lastName && true}
               />
@@ -88,7 +91,7 @@ const ReversalForm = () => {
                 setSchema={setSchema}
                 {...field}
                 type='text'
-                placeholder='Razón'
+                placeholder='Motivo '
                 label='Telefono'
                 invalid={errors.mobile && true}
               />
@@ -102,7 +105,7 @@ const ReversalForm = () => {
                 setSchema={setSchema}
                 type='email'
                 {...field}
-                placeholder='Razón'
+                placeholder='Motivo '
                 label='Email'
                 invalid={errors.email && true}
               />
@@ -116,7 +119,7 @@ const ReversalForm = () => {
                 setSchema={setSchema}
                 {...field}
                 type='text'
-                placeholder='Razón'
+                placeholder='Motivo '
                 label='test'
                 invalid={errors.test && true}
               />
@@ -130,7 +133,7 @@ const ReversalForm = () => {
                 setSchema={setSchema}
                 {...field}
                 type='text'
-                placeholder='Razón'
+                placeholder='Motivo '
                 label='test2'
                 invalid={errors.test2 && true}
               />
