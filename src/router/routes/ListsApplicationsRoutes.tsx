@@ -28,6 +28,11 @@ const OutstandingLoans = lazy(
   () => import('../../views/dashboard/listApplications/OutstandingLoans')
 );
 
+const OutstandingLoanDetail = lazy(
+  () =>
+    import('../../views/dashboard/listApplications/OutstandingLoans/Details')
+);
+
 const ListsApplicationsRoutes = [
   {
     path: '/list-registration-applications/lender',
@@ -56,6 +61,10 @@ const ListsApplicationsRoutes = [
   {
     path: '/list-registration-applications/outstanding-loans',
     element: <OutstandingLoans />,
+  },
+  {
+    element: <OutstandingLoanDetail />,
+    path: '/list-registration-applications/outstanding-loans/:id',
   },
 ];
 

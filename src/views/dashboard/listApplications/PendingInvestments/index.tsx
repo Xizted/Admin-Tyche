@@ -171,7 +171,7 @@ const columns = [
   },
 ];
 
-const ListLenders = () => {
+const ListPendingInvestments = () => {
   return (
     <div className='applications-list'>
       <Row>
@@ -221,4 +221,4 @@ const ListLenders = () => {
   );
 };
 
-export default ListLenders;
+export default ListPendingInvestments;

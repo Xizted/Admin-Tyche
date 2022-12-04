@@ -7,7 +7,7 @@ import GeneralInformation from './GeneralInformation';
 import UILoading from '@components/spinner/UILoading';
 import AttachedDocuments from './AttachedDocuments';
 import Actions from './Actions';
-import Investmentinformation from './Investmentinformation';
+import LoanInformation from './LoanInformation';
 
 enum Status {
   approved = 1,
@@ -15,7 +15,7 @@ enum Status {
   reversed = 3,
 }
 
-const InvestmentDetail = () => {
+const OutstandingLoanDetail = () => {
   const navigate = useNavigate();
 
   const { id } = useParams();
@@ -61,7 +61,7 @@ const InvestmentDetail = () => {
           </div>
         </CardHeader>
         <CardBody>
-          <Investmentinformation />
+          <LoanInformation />
           <GeneralInformation />
           <AttachedDocuments />
           {!lender.status && <Actions id={id} />}
@@ -71,4 +71,4 @@ const InvestmentDetail = () => {
   );
 };
 
-export default InvestmentDetail;
+export default OutstandingLoanDetail;
