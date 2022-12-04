@@ -4,6 +4,7 @@ import { Col, Form, Input, Label, Row } from 'reactstrap';
 import { Controller, useForm } from 'react-hook-form';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useState } from 'react';
 
 interface ReversalFormValues {
   name: string;
@@ -15,18 +16,18 @@ interface ReversalFormValues {
   observation: string;
 }
 
-const ReversalFormSchema = Yup.object().shape({
-  name: Yup.string().optional(),
-  lastName: Yup.string().optional(),
-  mobile: Yup.string().optional(),
-  email: Yup.string().optional(),
-  test: Yup.string().optional(),
-  test2: Yup.string().optional(),
-  observation: Yup.string().required(),
-});
-
 const ReversalForm = () => {
-  const { control, handleSubmit } = useForm<ReversalFormValues>({
+  const [schema, setSchema] = useState({
+    observation: Yup.string().required(),
+  });
+
+  const ReversalFormSchema = Yup.object().shape(schema);
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ReversalFormValues>({
     mode: 'all',
     defaultValues: {
       name: '',
@@ -56,10 +57,12 @@ const ReversalForm = () => {
             name='name'
             render={({ field }) => (
               <InputWithCheckbox
+                setSchema={setSchema}
                 {...field}
                 type='text'
                 placeholder='Razón'
                 label='Nombre'
+                invalid={errors.name && true}
               />
             )}
           />
@@ -68,10 +71,12 @@ const ReversalForm = () => {
             name='lastName'
             render={({ field }) => (
               <InputWithCheckbox
+                setSchema={setSchema}
                 {...field}
                 type='text'
                 placeholder='Razón'
                 label='Apellido'
+                invalid={errors.lastName && true}
               />
             )}
           />
@@ -80,10 +85,12 @@ const ReversalForm = () => {
             name={'mobile'}
             render={({ field }) => (
               <InputWithCheckbox
+                setSchema={setSchema}
                 {...field}
                 type='text'
                 placeholder='Razón'
                 label='Telefono'
+                invalid={errors.mobile && true}
               />
             )}
           />
@@ -92,10 +99,12 @@ const ReversalForm = () => {
             name='email'
             render={({ field }) => (
               <InputWithCheckbox
+                setSchema={setSchema}
                 type='email'
                 {...field}
                 placeholder='Razón'
                 label='Email'
+                invalid={errors.email && true}
               />
             )}
           />
@@ -104,10 +113,12 @@ const ReversalForm = () => {
             name='test'
             render={({ field }) => (
               <InputWithCheckbox
+                setSchema={setSchema}
                 {...field}
                 type='text'
                 placeholder='Razón'
                 label='test'
+                invalid={errors.test && true}
               />
             )}
           />
@@ -116,10 +127,12 @@ const ReversalForm = () => {
             name='test2'
             render={({ field }) => (
               <InputWithCheckbox
+                setSchema={setSchema}
                 {...field}
                 type='text'
                 placeholder='Razón'
                 label='test2'
+                invalid={errors.test2 && true}
               />
             )}
           />
@@ -139,6 +152,7 @@ const ReversalForm = () => {
                   style={{ minHeight: '100px' }}
                   rows='3'
                   cols='10'
+                  invalid={errors.observation && true}
                 />
               </div>
             )}

@@ -1,6 +1,7 @@
 import { forwardRef, memo, useState } from 'react';
 import { Input, InputGroup, InputGroupText, Label } from 'reactstrap';
 import { InputType } from 'reactstrap/types/lib/Input';
+import * as Yup from 'yup';
 
 interface InputWithCheckboxProps {
   label: string;
@@ -11,6 +12,8 @@ interface InputWithCheckboxProps {
   value: string;
   type: InputType;
   ref: any;
+  setSchema?: any;
+  invalid?: any;
 }
 
 const InputWithCheckbox = forwardRef(
@@ -23,6 +26,8 @@ const InputWithCheckbox = forwardRef(
       onChange,
       value,
       type,
+      setSchema,
+      invalid,
     }: InputWithCheckboxProps,
     ref
   ) => {
@@ -31,6 +36,12 @@ const InputWithCheckbox = forwardRef(
       setIsChecked(!isChecked);
       if (isChecked) {
         onChange('');
+        setSchema((schema: any) => delete schema['name']);
+      } else {
+        setSchema((schema: any) => ({
+          ...schema,
+          [name]: Yup.string().required(),
+        }));
       }
     };
     return (
@@ -58,6 +69,7 @@ const InputWithCheckbox = forwardRef(
             required={isChecked}
             //@ts-ignore
             ref={ref}
+            invalid={!isChecked ? undefined : invalid}
           />
         </InputGroup>
       </>
